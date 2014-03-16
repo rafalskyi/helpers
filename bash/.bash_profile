@@ -1,5 +1,4 @@
  # Path env
-export PATH="/usr/local/php5-5.3.27-20130930-102956/bin:$PATH"
 export PATH="/usr/local/mysql/bin:$PATH"
 export PATH="/usr/local/bin:$PATH"
 export PATH="/usr/local/opt/gettext/bin:$PATH"
@@ -20,6 +19,7 @@ alias 7minsoc='cd /Users/raf/Sites/7minuteworkout.srv/social7min/www/public_html
 alias PL='cd /Users/raf/Sites/pureleverage.srv/www/public_html'
 alias HC='cd /Users/raf/Sites/hotconference.srv/www/public_html'
 alias GC='cd /Users/raf/Sites/gvoconference.srv/www/public_html'
+alias HTP='cd /Users/raf/Sites/hostthenprofit.srv/www/public_html'
 alias phpswitch='sudo /Users/raf/helpers/bash/phpswitcher.sh'
 
 # Colors
@@ -43,3 +43,6 @@ PROMPT_COMMAND='history -a; history -n'
 export HISTIGNORE="&:ls:[bf]g:exit: cd \"\'*: PROMPT_COMMAND='*"
 
 export PATH="/opt/chef/embedded/bin:$PATH"
+#export PATH="/usr/local/php5-5.3.27-20130930-102956/bin:$PATH"
+
+export NODE_PATH=".:/Users/raf/Sites/test/node:$NODE_PATH"

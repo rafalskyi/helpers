@@ -9,16 +9,20 @@ declare -A PATH55=(
 	[LoadModulPHP]="/private/etc/apache2/extra/php55.conf" 
 	[ConfigPHP]="/usr/local/etc/php/5.5/php.ini" 
 	[ConfigPEAR]="/usr/local/etc/php/5.5/pear.conf"
+	[CLIphp]="/usr/local/Cellar/php55/5.5.10/bin/php" 
 )
 declare -A PATH53=(
 	[LoadModulPHP]="/private/etc/apache2/extra/php53.conf" 
 	[ConfigPHP]="/usr/local/php5-5.3.27-20130930-102956/lib/php.ini" 
 	[ConfigPEAR]="/Users/raf/.pearrc_53"
+	[CLIphp]="/usr/local/php5-5.3.27-20130930-102956/bin/php" 
 )
 
+# systems path
 LoadModulPHP="/private/etc/apache2/extra/php.conf"
 ConfigPHP="/etc/php.ini"
 ConfigPEAR="/Users/raf/.pearrc"
+CLIphp="/usr/local/bin/php"
 
 
 # Make sure only root can run our script
@@ -32,15 +36,18 @@ CLEAR_LINKS() {
 	unlink ${LoadModulPHP}
 	unlink ${ConfigPHP}
 	unlink ${ConfigPEAR}
+	unlink ${CLIphp}
 }
 
 # $1 - LoadModulPHP
 # $2 - ConfigPHP
 # $3 - ConfigPEAR
+# $4 - CLIphp
 CREATE_LINKS() {
 	ln -s $1 ${LoadModulPHP}
         ln -s $2 ${ConfigPHP}
         ln -s $3 ${ConfigPEAR}	
+        ln -s $4 ${CLIphp}	
 }
 
 FINISH() {
@@ -63,13 +70,13 @@ case "$1" in
 	-php55) 
 		echo "switching to PHP5.5"
 		CLEAR_LINKS
-		CREATE_LINKS ${PATH55[LoadModulPHP]} ${PATH55[ConfigPHP]} ${PATH55[ConfigPEAR]}
+		CREATE_LINKS ${PATH55[LoadModulPHP]} ${PATH55[ConfigPHP]} ${PATH55[ConfigPEAR]} ${PATH55[CLIphp]}
 		FINISH
 		;;
 	-php53)
 		echo "switching to PHP5.3"
 		CLEAR_LINKS
-		CREATE_LINKS ${PATH53[LoadModulPHP]} ${PATH53[ConfigPHP]} ${PATH53[ConfigPEAR]}
+		CREATE_LINKS ${PATH53[LoadModulPHP]} ${PATH53[ConfigPHP]} ${PATH53[ConfigPEAR]} ${PATH53[CLIphp]}
 		FINISH
 		;;
 	*)
