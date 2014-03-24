@@ -43,6 +43,5 @@ PROMPT_COMMAND='history -a; history -n'
 export HISTIGNORE="&:ls:[bf]g:exit: cd \"\'*: PROMPT_COMMAND='*"
 
 export PATH="/opt/chef/embedded/bin:$PATH"
-#export PATH="/usr/local/php5-5.3.27-20130930-102956/bin:$PATH"
 
 export NODE_PATH=".:/Users/raf/Sites/test/node:$NODE_PATH"
