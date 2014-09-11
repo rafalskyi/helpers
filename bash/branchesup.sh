@@ -17,10 +17,10 @@ case "$1" in
         *)
                 echo "use -h option for help"
                 echo "Starting updating"
-		cd $1
+		cd $(pwd)
 		git pull --all
 		git fetch origin
-		for var in "${@:2}" 
+		for var in "$@" 
 		do
     			echo "updating $var"
 			git checkout $var

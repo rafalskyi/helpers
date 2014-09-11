@@ -5,6 +5,7 @@ export PATH="/usr/local/opt/gettext/bin:$PATH"
 
 export PATH="/Users/raf/pear/bin/pear:$PATH"
 export PATH="/usr/local/Library/Formula:$PATH"
+export PATH="/Applications/IntelliJ IDEA 13.app/plugins/testng/lib:$PATH"
 
 #source .bash_profile
 
@@ -13,6 +14,7 @@ alias ls='ls -FGal'
 alias mysqls='sudo /usr/local/mysql/support-files/mysql.server'
 alias apachectls='sudo apachectl -k'
 alias updatedb='sudo /usr/libexec/locate.updatedb'
+alias sites='cd /Users/raf/Sites'
 alias gvo='cd /Users/raf/Sites/gogvo.srv/www/public_html'
 alias 7min='cd /Users/raf/Sites/7minuteworkout.srv/www/public_html'
 alias 7minsoc='cd /Users/raf/Sites/7minuteworkout.srv/social7min/www/public_html'
@@ -21,6 +23,7 @@ alias HC='cd /Users/raf/Sites/hotconference.srv/www/public_html'
 alias GC='cd /Users/raf/Sites/gvoconference.srv/www/public_html'
 alias HTP='cd /Users/raf/Sites/hostthenprofit.srv/www/public_html'
 alias phpswitch='sudo /Users/raf/helpers/bash/phpswitcher.sh'
+alias branchup='/Users/raf/helpers/bash/branchesup.sh'
 
 # Colors
 export CLICOLOR=1
