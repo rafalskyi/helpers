@@ -9,10 +9,11 @@ include_once("common.php");
 
 echo "\r\nPID = " . getmypid() . "\r\n";
 
-function responseToClient($accept, $awr)
+function responseToClient($accept, $buffer)
 {
-  echo "Say client \"" . $awr . "\"... ";
-  socket_write($accept, $awr, strlen($awr));
+  echo "Say client \"" . $buffer . "\"... ";
+  $buffer =  $buffer . "\r\n";
+  socket_write($accept, $buffer, strlen($buffer));
   echo "OK <br />";
 
   return true;
@@ -89,11 +90,11 @@ while (true) {
 
   $msg = "220 LoopPMTA";
   echo "Sending response to client \"" . $msg . "\"... ";
-  socket_write($accept, $msg, strlen($msg));
+  socket_write($accept, $msg."\r\n", strlen ($msg."\r\n"));
   echo "OK \r\n";
 
   while (true) {
-    $awr = socket_read($accept, 13337886720);
+    $awr = trim(socket_read($accept, 13337886720));
     if (false === $awr) {
       echo "Error: " . socket_strerror(socket_last_error()) . "\r\n";
       break 2;
@@ -106,7 +107,7 @@ while (true) {
           $answerToClient = "0";
           responseToClient($accept, $answerToClient);
           echo "Close <br />";
-          break 2;
+          break 1;
         }
 
         if (strpos($awr, 'EHLO') !== false) {
@@ -117,8 +118,6 @@ while (true) {
           $messageData = $awr;
           saveToDb($poolId, $mailFrom, $rcptTo, $messageData);
           $answerToClient = "250 OK";
-          responseToClient($accept, $answerToClient);
-          break 1;
         }
 
         if (base64_decode($awr, true) && $waitingAuth && $authLogin && !$authPass) {
@@ -128,10 +127,11 @@ while (true) {
         }
 
         if (base64_decode($awr, true) && $waitingAuth && !$authPass) {
+          echo "123";
           $login          = base64_decode($awr);
           $poolId = getPoolId($login);
           $authLogin      = true;
-          $answerToClient = "334 $awr";
+          $answerToClient = "334 " .  trim($awr);
         }
 
         if (strpos($awr, 'AUTH LOGIN') !== false) {
