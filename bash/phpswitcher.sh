@@ -9,7 +9,7 @@ declare -A PATH55=(
 	[LoadModulPHP]="/private/etc/apache2/extra/php55.conf" 
 	[ConfigPHP]="/usr/local/etc/php/5.5/php.ini" 
 	[ConfigPEAR]="/usr/local/etc/php/5.5/pear.conf"
-	[CLIphp]="/usr/local/Cellar/php55/5.5.10/bin/php" 
+	[CLIphp]="/usr/local/Cellar/php55/5.5.15/bin/php" 
 )
 declare -A PATH53=(
 	[LoadModulPHP]="/private/etc/apache2/extra/php53.conf" 
